@@ -171,24 +171,10 @@ const Navbar = () => {
             >
               <MenuItem
                 component={Link}
-                to="/products/a"
+                to="/commercial-solutions"
                 onClick={handleCloseProducts}
               >
-                Product A
-              </MenuItem>
-              <MenuItem
-                component={Link}
-                to="/products/b"
-                onClick={handleCloseProducts}
-              >
-                Product B
-              </MenuItem>
-              <MenuItem
-                component={Link}
-                to="/products/c"
-                onClick={handleCloseProducts}
-              >
-                Product C
+                Commercial Solutions
               </MenuItem>
             </Menu>
 
