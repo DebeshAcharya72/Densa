@@ -214,7 +214,90 @@ const Navbar = () => {
         onClose={handleDrawerToggle}
         sx={{ display: { md: "none" } }}
       >
-        {drawer}
+        <List>
+          <ListItem button component={Link} to="/" onClick={handleDrawerToggle}>
+            <ListItemText primary="Home" />
+          </ListItem>
+
+          {/* Solutions with sub-items */}
+          <ListItem>
+            <ListItemText primary="Solutions" />
+          </ListItem>
+          <Box sx={{ pl: 4 }}>
+            <ListItem
+              button
+              component={Link}
+              to="/lighting-automation"
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="Lighting Automation" />
+            </ListItem>
+            <ListItem
+              button
+              component={Link}
+              to="/tablets-and-displays"
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="Tablets And Displays" />
+            </ListItem>
+            <ListItem
+              button
+              component={Link}
+              to="/case-studies"
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="Case Studies" />
+            </ListItem>
+            <ListItem
+              button
+              component={Link}
+              to="/dash-subscriptions"
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="Dash Subscriptions" />
+            </ListItem>
+            <ListItem
+              button
+              component={Link}
+              to="/denton-drawing-database"
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="Denton Drawing Database" />
+            </ListItem>
+          </Box>
+
+          {/* Products with sub-items */}
+          <ListItem>
+            <ListItemText primary="Products" />
+          </ListItem>
+          <Box sx={{ pl: 4 }}>
+            <ListItem
+              button
+              component={Link}
+              to="/commercial-solutions"
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="Commercial Solutions" />
+            </ListItem>
+          </Box>
+
+          <ListItem
+            button
+            component={Link}
+            to="/support"
+            onClick={handleDrawerToggle}
+          >
+            <ListItemText primary="Support" />
+          </ListItem>
+          <ListItem
+            button
+            component={Link}
+            to="/contact"
+            onClick={handleDrawerToggle}
+          >
+            <ListItemText primary="Contact" />
+          </ListItem>
+        </List>
       </Drawer>
     </>
   );
