@@ -38,12 +38,12 @@ const SupportSteps = () => {
       sx={{
         py: 8,
         px: 3,
-        backgroundColor: "#f9f9ff",
+        backgroundColor: "#eeeef7",
         textAlign: "center",
       }}
     >
       {/* Heading */}
-      <Typography variant="h4" sx={{ fontWeight: "bold", mb: 6 }}>
+      <Typography variant="h3" sx={{ fontWeight: "bold", mb: 6 }}>
         Getting Support is Simple
       </Typography>
 
@@ -59,7 +59,7 @@ const SupportSteps = () => {
                   width: 90,
                   height: 90,
                   borderRadius: "50%",
-                  backgroundColor: "#8b5cf6",
+                  backgroundColor: "#2574fb",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -72,7 +72,7 @@ const SupportSteps = () => {
                     position: "absolute",
                     top: -8,
                     right: -8,
-                    backgroundColor: "#d946ef",
+                    backgroundColor: "#4284f7ff",
                     color: "#fff",
                     borderRadius: "50%",
                     width: 30,
@@ -89,7 +89,10 @@ const SupportSteps = () => {
               </Box>
 
               {/* Title */}
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: "bold", color: "#555" }}
+              >
                 {step.title}
               </Typography>
 

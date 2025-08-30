@@ -26,7 +26,7 @@ export default function WhyBuyLicense() {
   return (
     <Box sx={{ textAlign: "center", py: 8, background: "#f8fbff" }}>
       {/* Heading */}
-      <Typography variant="h5" fontWeight="bold" gutterBottom>
+      <Typography variant="h3" fontWeight="bold" gutterBottom>
         Why Buy a License?
       </Typography>
       <Typography
@@ -54,7 +54,12 @@ export default function WhyBuyLicense() {
               }}
             >
               <Box sx={{ mb: 2 }}>{item.icon}</Box>
-              <Typography variant="h6" fontWeight="bold" gutterBottom>
+              <Typography
+                variant="h6"
+                fontWeight="bold"
+                gutterBottom
+                sx={{ color: "#666" }}
+              >
                 {item.title}
               </Typography>
               <Typography variant="body2" color="text.secondary">

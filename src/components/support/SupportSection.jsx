@@ -14,9 +14,16 @@ const SupportSection = () => {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        background: "linear-gradient(135deg, #8e2de2, #4a00e0)",
         color: "#fff",
         px: 3,
+        position: "relative",
+        backgroundImage: `linear-gradient(
+          rgba(64, 123, 201, 0.47), 
+          rgba(5, 5, 141, 0.57)
+        ), url("/images/HelpBG.jpg")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Icon */}
@@ -33,20 +40,21 @@ const SupportSection = () => {
 
       {/* Title */}
       <Typography
-        variant="h4"
+        variant="h2"
         sx={{
           fontWeight: "bold",
           mb: 2,
+          color: "#fff",
         }}
       >
-        We're Here to Help –{" "}
+        We're Here to Help – <br />
         <span style={{ opacity: 0.7 }}>Anytime, Anywhere!</span>
       </Typography>
 
       {/* Subtitle */}
       <Typography
         variant="body1"
-        sx={{ maxWidth: "600px", mb: 4, opacity: 0.9 }}
+        sx={{ maxWidth: "600px", mb: 4, opacity: 0.7, color: "#fff" }}
       >
         At Densa, we understand that timely support is the backbone of great
         customer experience. Whether it's troubleshooting, product queries, or
@@ -57,8 +65,8 @@ const SupportSection = () => {
       <Button
         variant="contained"
         sx={{
-          background: "#fff",
-          color: "#6a11cb",
+          background: "#ffffffde",
+          color: "#2574fb",
           fontWeight: "bold",
           borderRadius: 2,
           textTransform: "none",

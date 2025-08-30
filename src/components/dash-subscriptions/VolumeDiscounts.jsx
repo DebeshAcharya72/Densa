@@ -24,7 +24,7 @@ export default function VolumeDiscounts() {
     <Box sx={{ textAlign: "center", py: 6, background: "#fff" }}>
       {/* Title */}
       <Typography
-        variant="h5"
+        variant="h3"
         fontWeight="bold"
         sx={{
           display: "flex",
@@ -46,13 +46,19 @@ export default function VolumeDiscounts() {
       {/* Table */}
       <TableContainer
         component={Paper}
-        sx={{ maxWidth: 600, mx: "auto", borderRadius: 3, boxShadow: 3 }}
+        sx={{ maxWidth: 1200, mx: "auto", borderRadius: 3, boxShadow: 3 }}
       >
         <Table>
           <TableHead>
             <TableRow sx={{ background: "#f1f5ff" }}>
-              <TableCell sx={{ fontWeight: "bold" }}>Quantity</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>
+              <TableCell
+                sx={{ fontWeight: "bold", textAlign: "center", color: "#666" }}
+              >
+                Quantity
+              </TableCell>
+              <TableCell
+                sx={{ fontWeight: "bold", textAlign: "center", color: "#666" }}
+              >
                 Price per device per year
               </TableCell>
             </TableRow>
@@ -60,8 +66,16 @@ export default function VolumeDiscounts() {
           <TableBody>
             {discounts.map((row, i) => (
               <TableRow key={i}>
-                <TableCell>{row.qty}</TableCell>
-                <TableCell sx={{ fontWeight: "bold" }}>
+                <TableCell sx={{ textAlign: "center", color: "#666" }}>
+                  {row.qty}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    color: "#666",
+                  }}
+                >
                   {row.price}
                   {row.discount && (
                     <Chip

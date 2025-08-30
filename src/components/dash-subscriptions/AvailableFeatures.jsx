@@ -80,7 +80,7 @@ const AvailableFeatures = () => {
   );
 
   return (
-    <Box sx={{ py: 6, bgcolor: "background.default" }}>
+    <Box sx={{ py: 6, bgcolor: "#eeeef7" }}>
       <Typography variant="h4" align="center" sx={{ fontWeight: 700, mb: 1 }}>
         Available Features
       </Typography>
@@ -100,7 +100,7 @@ const AvailableFeatures = () => {
           borderRadius: 2,
           boxShadow: "0 8px 40px rgba(0,0,0,0.08)",
           background:
-            "linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.92) 100%), #fff",
+            "linear-gradient(180deg, rgba(255, 255, 255, 0.57) 0%, rgba(255, 255, 255, 0.39) 100%), #ffffff71",
           overflow: "hidden",
         }}
       >

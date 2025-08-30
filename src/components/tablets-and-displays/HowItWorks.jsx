@@ -32,13 +32,17 @@ const HowItWorks = () => {
         color: "#fff",
         textAlign: "center",
         py: 8,
+        px: 8,
       }}
     >
       {/* Heading */}
-      <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>
+      <Typography
+        variant="h3"
+        sx={{ fontWeight: "bold", mb: 1, color: "#fff" }}
+      >
         How It <span style={{ color: "#00BFFF" }}>Works</span>
       </Typography>
-      <Typography variant="body1" sx={{ mb: 6 }}>
+      <Typography variant="body1" sx={{ mb: 6, color: "#fff" }}>
         Simple, efficient, and reliable - get your devices powered in three easy
         steps
       </Typography>
@@ -58,8 +62,8 @@ const HowItWorks = () => {
               <Box
                 sx={{
                   backgroundColor: "#00BFFF",
-                  width: 80,
-                  height: 80,
+                  width: 50,
+                  height: 50,
                   borderRadius: "50%",
                   display: "flex",
                   justifyContent: "center",
@@ -71,7 +75,7 @@ const HowItWorks = () => {
               </Box>
 
               {/* Step Number */}
-              <Box
+              {/* <Box
                 sx={{
                   backgroundColor: "#00BFFF",
                   width: 28,
@@ -87,7 +91,7 @@ const HowItWorks = () => {
                 }}
               >
                 {index + 1}
-              </Box>
+              </Box> */}
 
               {/* Title */}
               <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>

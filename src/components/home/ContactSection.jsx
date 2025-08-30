@@ -18,7 +18,7 @@ import SendIcon from "@mui/icons-material/Send";
 
 export default function ContactSection() {
   return (
-    <Box sx={{ py: 10, px: 2, backgroundColor: "#f9fafb" }}>
+    <Box sx={{ py: 10, px: 2, backgroundColor: "#eeeef7" }}>
       <Box sx={{ maxWidth: 1200, mx: "auto" }}>
         {/* Heading */}
         <Typography

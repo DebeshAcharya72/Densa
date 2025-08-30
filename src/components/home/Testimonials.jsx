@@ -52,7 +52,7 @@ export default function Testimonials() {
     <Box sx={{ textAlign: "center", py: 8, px: 2, position: "relative" }}>
       {/* Title */}
       <Typography
-        variant="h4"
+        variant="h3"
         sx={{
           fontWeight: "bold",
           mb: 1,

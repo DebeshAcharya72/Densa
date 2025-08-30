@@ -3,12 +3,11 @@ import {
   Box,
   Card,
   CardContent,
-  CardMedia,
   Grid,
   Typography,
   Avatar,
-  SvgIcon,
 } from "@mui/material";
+import { motion } from "framer-motion";
 import CodeIcon from "@mui/icons-material/Code";
 import SmartphoneIcon from "@mui/icons-material/Smartphone";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
@@ -52,54 +51,109 @@ const services = [
 const IconTile = ({ Icon }) => (
   <Avatar
     sx={{
-      width: 42,
-      height: 42,
-      bgcolor: "rgba(100, 149, 237, 0.15)",
+      width: 56,
+      height: 56,
+      bgcolor: "rgba(63, 81, 181, 0.1)",
       color: "#3f51b5",
-      mb: 1,
+      boxShadow: "0 4px 12px rgba(63, 81, 181, 0.2)",
     }}
   >
     <Icon fontSize="medium" />
   </Avatar>
 );
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      type: "spring",
+      stiffness: 60,
+    },
+  }),
+};
+
 const ServicesSectionOfDatabase = () => {
   return (
     <Box sx={{ bgcolor: "#f7f9fc", py: { xs: 6, sm: 8, md: 10 } }}>
-      <Box sx={{ textAlign: "center", mb: 4 }}>
-        <Typography variant="h4" component="h2" sx={{ fontWeight: 800 }}>
+      {/* Heading Section */}
+      <Box sx={{ textAlign: "center", mb: 6 }}>
+        <Typography
+          variant="h4"
+          component="h2"
+          sx={{
+            fontWeight: 800,
+            color: "#1e2a5a",
+            mb: 1,
+          }}
+        >
           Our Services
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mt: 1 }}>
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          sx={{ maxWidth: 650, mx: "auto" }}
+        >
           Comprehensive digital solutions tailored to meet your unique business
           needs and drive sustainable growth.
         </Typography>
       </Box>
 
-      <Box sx={{ maxWidth: 1100, mx: "auto", px: 2 }}>
+      {/* Cards Section */}
+      <Box sx={{ maxWidth: 1200, mx: "auto", px: 2 }}>
         <Grid container spacing={4} justifyContent="center">
           {services.map((s, idx) => (
             <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx}>
-              <Card
-                sx={{
-                  borderRadius: 2,
-                  boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-                }}
+              <motion.div
+                custom={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={cardVariants}
               >
-                <CardContent
-                  sx={{ display: "flex", alignItems: "flex-start", gap: 2 }}
+                <motion.div
+                  whileHover={{
+                    scale: 1.05,
+                    y: -5,
+                    boxShadow: "0 12px 30px rgba(0,0,0,0.15)",
+                    borderRadius: "12px",
+                  }}
+                  transition={{ type: "spring", stiffness: 200, damping: 12 }}
                 >
-                  <IconTile Icon={s.Icon} />
-                  <Box sx={{ flex: 1 }}>
-                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5 }}>
-                      {s.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {s.desc}
-                    </Typography>
-                  </Box>
-                </CardContent>
-              </Card>
+                  <Card
+                    sx={{
+                      borderRadius: 3,
+                      p: 2,
+                      textAlign: "left",
+                      height: "100%",
+                      background: "#fff",
+                      boxShadow: "0 6px 18px rgba(0,0,0,0.06)",
+                      transition: "all 0.3s ease",
+                    }}
+                  >
+                    <CardContent sx={{ display: "flex", gap: 2 }}>
+                      <IconTile Icon={s.Icon} />
+                      <Box>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            fontWeight: 700,
+                            color: "#2c387e",
+                            mb: 0.5,
+                          }}
+                        >
+                          {s.title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {s.desc}
+                        </Typography>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </motion.div>
             </Grid>
           ))}
         </Grid>

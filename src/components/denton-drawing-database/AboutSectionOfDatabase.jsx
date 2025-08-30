@@ -73,7 +73,7 @@ const AboutSectionOfDatabase = () => {
                 <Stack direction="column" spacing={0.5}>
                   <Typography
                     variant="h5"
-                    sx={{ fontWeight: 800, color: "#1e88e5" }}
+                    sx={{ fontWeight: 800, color: "#1e2a5a" }}
                   >
                     {b.value}
                   </Typography>
@@ -106,7 +106,7 @@ const AboutSectionOfDatabase = () => {
           >
             <CardMedia
               component="img"
-              image="https://images.unsplash.com/photo-1527689368864-3a821dbba36b?q=80&w=1200&auto=format&fit=crop"
+              src="/images/modern-corporate-office.jpg"
               alt="Office workspace"
               sx={{ height: 320, width: "100%", objectFit: "cover" }}
             />

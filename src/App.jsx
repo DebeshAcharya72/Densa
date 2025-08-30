@@ -9,6 +9,7 @@ import DentonDrawingDatabase from "./pages/DentonDrawingDatabase";
 
 import Support from "./pages/Support";
 import ContactUs from "./pages/ContactUs";
+import CommercialSolutions from "./pages/CommercialSolutions";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/dash-subscriptions" element={<DashSubscriptions />} />
       <Route path="/support" element={<Support />} />
       <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/commercial-solutions" element={<CommercialSolutions />} />
       <Route
         path="/denton-drawing-database"
         element={<DentonDrawingDatabase />}

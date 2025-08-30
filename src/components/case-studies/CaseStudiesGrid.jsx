@@ -13,37 +13,37 @@ const caseStudies = [
     title: "Inka Games",
     subtitle: "Entertainment Complex - Lima, Peru",
     desc: "Complete PoE lighting automation system",
-    image: "/images/inka.jpg",
+    image: "/images/InkaGames.jpg",
   },
   {
     title: "Hudson Bar & Grill",
     subtitle: "Restaurant Chain - North America",
     desc: "Smart lighting and climate control",
-    image: "/images/hudson.jpg",
+    image: "/images/Hudson.jpg",
   },
   {
     title: "Resorts World",
     subtitle: "Luxury Resort - Caribbean",
     desc: "Integrated automation infrastructure",
-    image: "/images/resorts.jpg",
+    image: "/images/ResortsWorld.jpg",
   },
   {
     title: "Tech Innovation Hub",
     subtitle: "Office Complex - Silicon Valley",
     desc: "Advanced PoE network solutions",
-    image: "/images/tech.jpg",
+    image: "/images/TechInnovation.jpg",
   },
   {
     title: "Green Valley Mall",
     subtitle: "Shopping Center - Miami, FL",
     desc: "Energy-efficient lighting system",
-    image: "/images/greenvalley.jpg",
+    image: "/images/GreenValley.jpg",
   },
   {
     title: "Metropolitan Hospital",
     subtitle: "Healthcare Facility - New York",
     desc: "Critical infrastructure automation",
-    image: "/images/hospital.jpg",
+    image: "/images/Metropolitan.jpg",
   },
 ];
 
@@ -52,7 +52,7 @@ const CaseStudiesGrid = () => {
     <Box
       sx={{
         // width: "100%",
-        background: "linear-gradient(90deg, #0a1a3f, #123a8f)",
+        background: "#eeeef7",
         py: 6,
         px: { xs: 2, sm: 4, md: 8 },
       }}
@@ -75,7 +75,7 @@ const CaseStudiesGrid = () => {
             >
               <CardMedia
                 component="img"
-                height="160"
+                height="200"
                 image={study.image}
                 alt={study.title}
               />

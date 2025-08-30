@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, Paper } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import { motion } from "framer-motion";
 
 // MUI icons
 import MemoryIcon from "@mui/icons-material/Memory";
@@ -79,48 +80,63 @@ const items = [
   },
 ];
 
+// Motion variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 function TechCard({ title, subtitle, icon, iconGrad, cardGrad, shadow }) {
   return (
-    <Paper
-      elevation={0}
-      sx={{
-        p: 3,
-        borderRadius: "18px",
-        background: cardGrad,
-        height: "100%",
-        boxShadow: "0 10px 22px rgba(0,0,0,0.08)",
-        position: "relative",
-        transition: "transform .25s ease, box-shadow .25s ease",
-        "&:hover": {
-          transform: "translateY(-6px)",
-          boxShadow: "0 16px 36px rgba(0,0,0,0.12)",
-        },
-      }}
-    >
-      {/* tilted badge */}
-      <Box
+    <motion.div variants={cardVariants} whileHover={{ scale: 1.05 }}>
+      <Paper
+        elevation={0}
         sx={{
-          width: 48,
-          height: 48,
-          borderRadius: "14px",
-          background: iconGrad,
-          display: "grid",
-          placeItems: "center",
-          transform: "rotate(-15deg)",
-          boxShadow: `0 8px 18px ${shadow}`,
-          mb: 2.5,
+          p: 3,
+          borderRadius: "18px",
+          background: cardGrad,
+          height: "100%",
+          boxShadow: "0 10px 22px rgba(0,0,0,0.08)",
+          position: "relative",
+          transition: "transform .25s ease, box-shadow .25s ease",
+          "&:hover": {
+            boxShadow: "0 18px 36px rgba(0,0,0,0.18)",
+          },
         }}
       >
-        <Box sx={{ transform: "rotate(15deg)" }}>{icon}</Box>
-      </Box>
+        {/* tilted badge */}
+        <Box
+          sx={{
+            width: 48,
+            height: 48,
+            borderRadius: "14px",
+            background: iconGrad,
+            display: "grid",
+            placeItems: "center",
+            transform: "rotate(-15deg)",
+            boxShadow: `0 8px 18px ${shadow}`,
+            mb: 2.5,
+          }}
+        >
+          <Box sx={{ transform: "rotate(15deg)" }}>{icon}</Box>
+        </Box>
 
-      <Typography sx={{ fontWeight: 700, mb: 0.5, color: "#0f172a" }}>
-        {title}
-      </Typography>
-      <Typography variant="body2" sx={{ color: "text.secondary" }}>
-        {subtitle}
-      </Typography>
-    </Paper>
+        <Typography sx={{ fontWeight: 700, mb: 0.5, color: "#0f172a" }}>
+          {title}
+        </Typography>
+        <Typography variant="body2" sx={{ color: "text.secondary" }}>
+          {subtitle}
+        </Typography>
+      </Paper>
+    </motion.div>
   );
 }
 
@@ -132,7 +148,6 @@ export default function TechnologyStack() {
         py: 8,
         px: 2,
         overflow: "hidden",
-        // subtle diamond pattern background (no images)
         "&::before": {
           content: '""',
           position: "absolute",
@@ -150,43 +165,64 @@ export default function TechnologyStack() {
       }}
     >
       {/* Title */}
-      <Typography variant="h4" align="center" sx={{ fontWeight: 800, mb: 1 }}>
-        Our{" "}
-        <Box
-          component="span"
-          sx={{
-            background: "linear-gradient(90deg,#2563eb,#9333ea)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          Technology Stack
-        </Box>
-      </Typography>
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <Typography variant="h4" align="center" sx={{ fontWeight: 800, mb: 1 }}>
+          Our{" "}
+          <Box
+            component="span"
+            sx={{
+              background: "linear-gradient(90deg,#2563eb,#9333ea)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Technology Stack
+          </Box>
+        </Typography>
+      </motion.div>
 
       {/* Subtitle */}
-      <Typography
-        align="center"
-        variant="body1"
-        sx={{
-          color: "text.secondary",
-          maxWidth: 760,
-          mx: "auto",
-          mb: 6,
-        }}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        viewport={{ once: true }}
       >
-        Powered by cutting-edge technologies and industry-leading platforms to
-        deliver robust, scalable, and future-ready solutions.
-      </Typography>
+        <Typography
+          align="center"
+          variant="body1"
+          sx={{
+            color: "text.secondary",
+            maxWidth: 760,
+            mx: "auto",
+            mb: 6,
+          }}
+        >
+          Powered by cutting-edge technologies and industry-leading platforms to
+          deliver robust, scalable, and future-ready solutions.
+        </Typography>
+      </motion.div>
 
       {/* Cards */}
-      <Grid container spacing={3} sx={{ maxWidth: 1200, mx: "auto" }}>
-        {items.map((it, i) => (
-          <Grid key={i} size={{ xs: 12, sm: 6, md: 3 }}>
-            <TechCard {...it} />
-          </Grid>
-        ))}
-      </Grid>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+        <Grid container spacing={3} sx={{ maxWidth: 1200, mx: "auto" }}>
+          {items.map((it, i) => (
+            <Grid key={i} size={{ xs: 12, sm: 6, md: 3 }}>
+              <TechCard {...it} />
+            </Grid>
+          ))}
+        </Grid>
+      </motion.div>
     </Box>
   );
 }

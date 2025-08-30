@@ -13,15 +13,12 @@ import CalculateIcon from "@mui/icons-material/Calculate";
 
 const AutomationSection = () => {
   return (
-    <Box sx={{ bgcolor: "#f8fbff", py: 10 }}>
+    <Box sx={{ bgcolor: "#eeeef7", py: 10 }}>
       <Container maxWidth="lg">
         <Grid container spacing={6} alignItems="center">
           {/* Left Content */}
           <Grid size={{ xs: 12, md: 8 }}>
-            <Typography
-              variant="h4"
-              sx={{ fontWeight: 700, mb: 1, color: "#0d1b2a" }}
-            >
+            <Typography variant="h4" sx={{ fontWeight: 700, mb: 1 }}>
               Fully Connected Automation & Intelligence
             </Typography>
 
@@ -57,13 +54,14 @@ const AutomationSection = () => {
                 borderRadius: "16px",
                 boxShadow: "0px 6px 24px rgba(0,0,0,0.1)",
                 textAlign: "center",
+                background: "#ffffff63",
               }}
             >
               <CardContent>
                 <CalculateIcon sx={{ fontSize: 40, color: "#1a56db", mb: 2 }} />
                 <Typography
                   variant="h6"
-                  sx={{ fontWeight: 700, mb: 1, color: "#0d1b2a" }}
+                  sx={{ fontWeight: 700, mb: 1, color: "#58585eff" }}
                 >
                   Ready to Get Started?
                 </Typography>
@@ -82,7 +80,7 @@ const AutomationSection = () => {
                     bgcolor: "#1a56db",
                     fontWeight: 600,
                     py: 1.2,
-                    borderRadius: "8px",
+                    borderRadius: "26px",
                     "&:hover": { bgcolor: "#1541a1" },
                   }}
                 >

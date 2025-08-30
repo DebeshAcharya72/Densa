@@ -8,6 +8,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import { color, motion } from "framer-motion"; // 👈 import framer-motion
 import BusinessIcon from "@mui/icons-material/Business";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import SecurityIcon from "@mui/icons-material/Security";
@@ -101,9 +102,14 @@ export default function SixCardsSection() {
     <Box sx={{ py: 8, px: 2, maxWidth: "1200px", mx: "auto" }}>
       {/* Title */}
       <Typography
-        variant="h4"
+        variant="h3"
         align="center"
-        sx={{ fontWeight: "bold", mb: 1 }}
+        sx={{
+          fontWeight: "bold",
+          mb: 1,
+          letterSpacing: "5px",
+          // color: "#777474ff",
+        }}
       >
         Our{" "}
         <Box
@@ -129,60 +135,76 @@ export default function SixCardsSection() {
       </Typography>
 
       {/* Service Cards */}
-      <Grid container spacing={4}>
+      <Grid container spacing={4} justifyContent="center">
         {services.map((service, index) => (
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
-            <Paper
-              sx={{
-                p: 3,
-                borderRadius: "16px",
-                background: service.color,
-                boxShadow: "0 6px 16px rgba(0,0,0,0.08)",
-                height: "100%",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                "&:hover": {
-                  transform: "translateY(-6px)",
-                  boxShadow: "0 12px 24px rgba(0,0,0,0.12)",
-                },
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
-              {/* Icon */}
-              <Box sx={{ mb: 2 }}>{service.icon}</Box>
-
-              {/* Title */}
-              <Typography variant="h6" fontWeight="bold" gutterBottom>
-                {service.title}
-              </Typography>
-
-              {/* Description */}
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                {service.description}
-              </Typography>
-
-              {/* Bullet Points */}
-              <List dense>
-                {service.points.map((point, i) => (
-                  <ListItem key={i} sx={{ py: 0 }}>
-                    <ListItemText
-                      primary={point}
-                      primaryTypographyProps={{ variant: "body2" }}
-                    />
-                  </ListItem>
-                ))}
-              </List>
-
-              <Typography
-                variant="body2"
+              <Paper
                 sx={{
-                  mt: 1,
-                  fontWeight: "bold",
-                  color: "#2563eb",
-                  cursor: "pointer",
+                  p: 3,
+                  borderRadius: "16px",
+                  background: service.color,
+                  boxShadow: "0 6px 16px rgba(0,0,0,0.08)",
+                  height: "100%",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-6px)",
+                    boxShadow: "0 12px 24px rgba(0,0,0,0.12)",
+                  },
                 }}
               >
-                Learn More →
-              </Typography>
-            </Paper>
+                {/* Icon */}
+                <Box sx={{ mb: 2 }}>{service.icon}</Box>
+
+                {/* Title */}
+                <Typography
+                  variant="h6"
+                  fontWeight="bold"
+                  gutterBottom
+                  sx={{ color: "#666" }}
+                >
+                  {service.title}
+                </Typography>
+
+                {/* Description */}
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 2 }}
+                >
+                  {service.description}
+                </Typography>
+
+                {/* Bullet Points */}
+                <List dense>
+                  {service.points.map((point, i) => (
+                    <ListItem key={i} sx={{ py: 0, color: "#555" }}>
+                      <ListItemText
+                        primary={point}
+                        primaryTypographyProps={{ variant: "body2" }}
+                      />
+                    </ListItem>
+                  ))}
+                </List>
+
+                {/* <Typography
+                  variant="body2"
+                  sx={{
+                    mt: 1,
+                    fontWeight: "bold",
+                    color: "#2563eb",
+                    cursor: "pointer",
+                  }}
+                >
+                  Learn More →
+                </Typography> */}
+              </Paper>
+            </motion.div>
           </Grid>
         ))}
       </Grid>

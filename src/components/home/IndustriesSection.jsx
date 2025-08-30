@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Box, Typography, Button, Paper, Chip } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import { motion, AnimatePresence } from "framer-motion";
+
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import FactoryIcon from "@mui/icons-material/Factory";
 import SchoolIcon from "@mui/icons-material/School";
@@ -12,6 +14,7 @@ const industries = [
   {
     name: "Commercial Real Estate",
     icon: <ApartmentIcon />,
+    image: "/images/CommercialRealEstate.jpg",
     description:
       "Smart building solutions for office complexes, retail spaces, and mixed-use developments with integrated automation systems.",
     solutions: [
@@ -29,6 +32,7 @@ const industries = [
   {
     name: "Manufacturing",
     icon: <FactoryIcon />,
+    image: "/images/Manufacturing.jpg",
     description:
       "Automation, safety, and IoT-driven solutions to optimize manufacturing processes and operational efficiency.",
     solutions: [
@@ -46,6 +50,7 @@ const industries = [
   {
     name: "Education",
     icon: <SchoolIcon />,
+    image: "/images/Education.jpg",
     description:
       "Smart campus solutions for schools and universities, enabling secure, efficient, and connected learning environments.",
     solutions: [
@@ -63,6 +68,7 @@ const industries = [
   {
     name: "Healthcare",
     icon: <LocalHospitalIcon />,
+    image: "/images/Healthcare.jpg",
     description:
       "Advanced automation and monitoring systems to support hospitals, clinics, and healthcare institutions.",
     solutions: [
@@ -80,6 +86,7 @@ const industries = [
   {
     name: "Retail",
     icon: <StorefrontIcon />,
+    image: "/images/Retail.jpg",
     description:
       "IoT-driven retail automation, security, and energy-efficient solutions for shopping centers and retail outlets.",
     solutions: [
@@ -97,6 +104,7 @@ const industries = [
   {
     name: "Residential",
     icon: <HomeIcon />,
+    image: "/images/Residential.jpg",
     description:
       "Smart residential solutions for modern living — integrated security, IoT, and energy management.",
     solutions: [
@@ -118,12 +126,24 @@ export default function IndustriesSection() {
   const industry = industries[active];
 
   return (
-    <Box sx={{ py: 8, px: 2, maxWidth: "1200px", mx: "auto" }}>
+    <Box
+      sx={{
+        py: 10,
+        px: 2,
+        maxWidth: "1300px",
+        mx: "auto",
+        backgroundColor: "#eeeef7",
+      }}
+    >
       {/* Title */}
       <Typography
-        variant="h4"
+        variant="h3"
         align="center"
-        sx={{ fontWeight: "bold", mb: 1 }}
+        sx={{
+          fontWeight: "bold",
+          mb: 1,
+          letterSpacing: "-0.5px",
+        }}
       >
         Industries We{" "}
         <Box
@@ -141,7 +161,13 @@ export default function IndustriesSection() {
       <Typography
         align="center"
         variant="body1"
-        sx={{ color: "text.secondary", mb: 4, maxWidth: "700px", mx: "auto" }}
+        sx={{
+          color: "text.secondary",
+          mb: 6,
+          maxWidth: "720px",
+          mx: "auto",
+          fontSize: "1.1rem",
+        }}
       >
         Our technology solutions are trusted across diverse industries,
         delivering measurable results and operational excellence.
@@ -158,131 +184,186 @@ export default function IndustriesSection() {
         }}
       >
         {industries.map((ind, index) => (
-          <Button
-            key={index}
-            onClick={() => setActive(index)}
-            startIcon={ind.icon}
-            sx={{
-              borderRadius: "30px",
-              textTransform: "none",
-              px: 3,
-              py: 1,
-              fontWeight: 500,
-              backgroundColor: active === index ? "#2563eb" : "#fff",
-              color: active === index ? "#fff" : "#374151",
-              boxShadow:
-                active === index
-                  ? "0 4px 12px rgba(37,99,235,0.3)"
-                  : "0 3px 8px rgba(0,0,0,0.1)",
-              "&:hover": {
-                backgroundColor: active === index ? "#1e40af" : "#f9fafb",
-              },
-            }}
-          >
-            {ind.name}
-          </Button>
+          <motion.div whileHover={{ scale: 1.05 }} key={index}>
+            <Button
+              onClick={() => setActive(index)}
+              startIcon={ind.icon}
+              sx={{
+                borderRadius: "40px",
+                textTransform: "none",
+                px: 3.5,
+                py: 1.2,
+                fontWeight: 600,
+                fontSize: "0.95rem",
+                background:
+                  active === index
+                    ? "linear-gradient(90deg,#2563eb,#1e40af)"
+                    : "#fff",
+                color: active === index ? "#fff" : "#374151",
+                transition: "all 0.3s ease",
+                boxShadow:
+                  active === index
+                    ? "0 6px 14px rgba(37,99,235,0.35)"
+                    : "0 3px 8px rgba(0,0,0,0.08)",
+                "&:hover": {
+                  background:
+                    active === index
+                      ? "linear-gradient(90deg,#1e3a8a,#1e40af)"
+                      : "#f9fafb",
+                },
+              }}
+            >
+              {ind.name}
+            </Button>
+          </motion.div>
         ))}
       </Box>
 
-      {/* Content */}
-      <Grid container spacing={4} alignItems="center">
-        {/* Left Content */}
-        <Grid size={{ xs: 12, md: 6 }}>
-          <Typography variant="h5" fontWeight="bold" gutterBottom>
-            {industry.name}
-          </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-            {industry.description}
-          </Typography>
+      {/* Content with animation */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -30 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+        >
+          <Grid container spacing={6} alignItems="center">
+            {/* Left Content */}
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Typography variant="h4" fontWeight="bold" gutterBottom>
+                {industry.name}
+              </Typography>
+              <Typography
+                variant="body1"
+                // color="text.secondary"
+                sx={{ mb: 3, fontSize: "1.05rem" }}
+              >
+                {industry.description}
+              </Typography>
 
-          {/* Solutions */}
-          <Typography fontWeight="bold" sx={{ mb: 1 }}>
-            Key Solutions:
-          </Typography>
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: 2,
-              mb: 4,
-            }}
-          >
-            {industry.solutions.map((sol, i) => (
-              <Chip
-                key={i}
-                label={sol}
+              {/* Solutions */}
+              <Typography fontWeight="bold" sx={{ mb: 1 }}>
+                Key Solutions:
+              </Typography>
+              <Box
                 sx={{
-                  backgroundColor: "#fff",
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
-                  borderRadius: "8px",
-                  fontWeight: 500,
-                  fontSize: "0.9rem",
-                  "& .MuiChip-label": { px: 2, py: 1 },
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, 1fr)",
+                  gap: 2,
+                  mb: 4,
                 }}
-              />
-            ))}
-          </Box>
+              >
+                {industry.solutions.map((sol, i) => (
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                    key={i}
+                  >
+                    <Chip
+                      label={sol}
+                      sx={{
+                        background: "rgba(255,255,255,0.6)",
+                        backdropFilter: "blur(6px)",
+                        boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
+                        borderRadius: "10px",
+                        fontWeight: 500,
+                        fontSize: "0.95rem",
+                        "& .MuiChip-label": { px: 2, py: 1 },
+                      }}
+                    />
+                  </motion.div>
+                ))}
+              </Box>
 
-          {/* Stats */}
-          <Grid container spacing={3}>
-            {industry.stats.map((stat, i) => (
-              <Grid size={{ xs: 4 }} key={i}>
+              {/* Stats */}
+              <Grid container spacing={3}>
+                {industry.stats.map((stat, i) => (
+                  <Grid size={{ xs: 4 }} key={i}>
+                    <motion.div
+                      whileHover={{ scale: 1.07 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Paper
+                        sx={{
+                          p: 2.5,
+                          textAlign: "center",
+                          borderRadius: "14px",
+                          background: stat.color,
+                          color: "#fff",
+                          boxShadow: "0 6px 16px rgba(0,0,0,0.15)",
+                        }}
+                      >
+                        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                          {stat.value}
+                        </Typography>
+                        <Typography variant="body2">{stat.label}</Typography>
+                      </Paper>
+                    </motion.div>
+                  </Grid>
+                ))}
+              </Grid>
+            </Grid>
+
+            {/* Right Image Section */}
+            <Grid size={{ xs: 12, md: 6 }}>
+              <motion.div
+                key={industry.image} // ensures animation when changing images
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              >
                 <Paper
                   sx={{
-                    p: 2,
-                    textAlign: "center",
-                    borderRadius: "12px",
-                    boxShadow: "0 3px 8px rgba(0,0,0,0.08)",
+                    height: 320,
+                    borderRadius: "24px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background: "linear-gradient(180deg,#f9fafb,#e5e7eb)",
+                    position: "relative",
+                    boxShadow: "0 10px 25px rgba(0,0,0,0.12)",
+                    overflow: "hidden",
                   }}
                 >
-                  <Typography
-                    variant="h6"
-                    sx={{ fontWeight: "bold", color: stat.color }}
+                  {/* Top-right floating icon */}
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: 20,
+                      right: 20,
+                      background: "#fff",
+                      p: 2,
+                      borderRadius: "14px",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                    }}
                   >
-                    {stat.value}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {stat.label}
-                  </Typography>
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
-        </Grid>
+                    {industry.icon}
+                  </Box>
 
-        {/* Right Image Placeholder */}
-        <Grid size={{ xs: 12, md: 6 }}>
-          <Paper
-            sx={{
-              height: 280,
-              borderRadius: "20px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "linear-gradient(180deg,#f3f4f6,#e5e7eb)",
-              position: "relative",
-              boxShadow: "0 6px 16px rgba(0,0,0,0.12)",
-            }}
-          >
-            <Box
-              sx={{
-                position: "absolute",
-                top: 16,
-                right: 16,
-                background: "#fff",
-                p: 1.5,
-                borderRadius: "12px",
-                boxShadow: "0 3px 8px rgba(0,0,0,0.15)",
-              }}
-            >
-              <ApartmentIcon sx={{ color: "#2563eb", fontSize: 28 }} />
-            </Box>
-            <Typography variant="body2" color="text.secondary">
-              [ Image / Illustration ]
-            </Typography>
-          </Paper>
-        </Grid>
-      </Grid>
+                  {/* Industry Image */}
+                  <motion.img
+                    src={industry.image}
+                    alt={industry.name}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </Paper>
+              </motion.div>
+            </Grid>
+          </Grid>
+        </motion.div>
+      </AnimatePresence>
     </Box>
   );
 }

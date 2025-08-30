@@ -77,7 +77,12 @@ const HeroTwoCol = ({
       <Container maxWidth="lg">
         <Grid container spacing={4} alignItems="center">
           {/* Left: Card with gradient device illustration */}
-          <Grid item xs={12} md={6}>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{ display: { xs: "none", md: "block" } }}
+          >
             <Box
               sx={{
                 position: "relative",
@@ -105,7 +110,6 @@ const HeroTwoCol = ({
                   boxShadow: "inset 0 0 40px rgba(255,255,255,.08)",
                 }}
               >
-                {/* Icon in the middle to resemble "device" card */}
                 <Box
                   sx={{
                     width: 92,
@@ -122,7 +126,7 @@ const HeroTwoCol = ({
                 </Box>
               </Box>
 
-              {/* small floating badge on the top-right of the card */}
+              {/* small floating badge */}
               <Box
                 sx={{
                   position: "absolute",

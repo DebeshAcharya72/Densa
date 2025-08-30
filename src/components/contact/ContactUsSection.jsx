@@ -5,14 +5,19 @@ const ContactUsSection = () => {
   return (
     <Box
       sx={{
-        background: "linear-gradient(135deg, #4facfe, #6a82fb)",
+        backgroundImage: `
+          linear-gradient(135deg, rgba(79,172,254,0.9), rgba(106,130,251,0.9)),
+          url("/images/contactUs.jpg")
+        `,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
         color: "white",
         textAlign: "center",
         py: 10,
       }}
     >
       {/* Title */}
-      <Typography variant="h3" fontWeight="bold" gutterBottom>
+      <Typography variant="h3" fontWeight="bold" gutterBottom color="#fff">
         Contact Us
       </Typography>
 

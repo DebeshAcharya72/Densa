@@ -1,98 +1,80 @@
 import React from "react";
-import { Box, Button, Typography, Stack } from "@mui/material";
-
-/**
- * Exact-like UI: "Transform Your Digital Vision" hero
- * - Full-width blue gradient background
- * - Large white heading with emphasis on "Digital Vision" in orange
- * - Subheading centered
- * - Primary orange CTA with subtle elevation
- * - Self-contained, no external deps beyond MUI
- */
+import { Box, Button, Typography, Container, Stack } from "@mui/material";
 
 const HeroTransform = () => {
   return (
     <Box
       sx={{
-        width: "100%",
-        minHeight: "60vh",
+        position: "relative",
+        height: "100vh",
+        backgroundImage: `url("/images/futuristic-bg.jpg")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
-        // gradient: left to right or top to bottom; adjust to match screenshot
-        background:
-          "linear-gradient(135deg, #0b58d6 0%, #1e3a93 50%, #0b1d6b 100%)",
-        // fallback for very old browsers
-        // backgroundColor: '#0a3d91',
+        color: "#fff",
       }}
     >
+      {/* Overlay */}
       <Box
         sx={{
-          textAlign: "center",
-          color: "white",
-          maxWidth: 860,
-          px: 3,
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background:
+            "linear-gradient(to right, rgba(0, 51, 153, 0.8) 0%, rgba(0, 51, 153, 0) 100%)",
+          zIndex: 1,
         }}
-      >
-        <Typography
-          variant="h2"
-          component="h1"
-          sx={{
-            fontWeight: 800,
-            letterSpacing: 0.2,
-            mb: 2,
-            // Use a stacked span to color the emphasized part
-          }}
-        >
-          Transform Your&nbsp;
-          <Box
-            component="span"
-            sx={{
-              color: "#f7a82e", // orange emphasis
-              fontWeight: 800,
-              // slight text-shadow to mimic depth
-              textShadow: "0 2px 0 rgba(0,0,0,0.05)",
-            }}
-          >
-            Digital Vision
-          </Box>
-        </Typography>
+      />
 
-        <Typography
-          variant="subtitle1"
-          sx={{
-            color: "white",
-            opacity: 0.95,
-            mb: 4,
-            fontSize: { xs: 15, sm: 16, md: 17 },
-            maxWidth: 640,
-            mx: "auto",
-          }}
-        >
-          We create exceptional digital experiences that drive growth, engage
-          audiences, and deliver measurable results for your business.
-        </Typography>
-
-        <Stack direction="row" justifyContent="center">
-          <Button
-            variant="contained"
-            size="large"
+      {/* Content */}
+      <Container sx={{ position: "relative", zIndex: 2, maxWidth: "lg" }}>
+        <Box sx={{ maxWidth: "700px" }}>
+          <Typography
+            variant="h2"
             sx={{
-              backgroundColor: "#ff6b2c",
-              color: "white",
-              textTransform: "none",
               fontWeight: 700,
-              boxShadow: "0 6px 14px rgba(0,0,0,0.25)",
-              "&:hover": {
-                backgroundColor: "#ff8236",
-                boxShadow: "0 6px 20px rgba(0,0,0,0.28)",
-              },
+              lineHeight: 1.2,
+              fontSize: { xs: "2.5rem", md: "3.5rem" },
+              color: "#fff",
             }}
           >
-            Get Started Today
-          </Button>
-        </Stack>
-      </Box>
+            Transform Your <br /> Digital Vision
+          </Typography>
+
+          <Typography
+            variant="h6"
+            sx={{
+              mt: 3,
+              mb: 4,
+              color: "rgba(255,255,255,0.85)",
+              fontWeight: 400,
+              maxWidth: "600px",
+            }}
+          >
+            We create exceptional digital experiences that drive growth, engage
+            audiences, and deliver measurable results for your business.
+          </Typography>
+
+          <Stack direction="row" spacing={2}>
+            <Button
+              variant="contained"
+              sx={{
+                bgcolor: "#1a56db",
+                borderRadius: 10,
+                fontWeight: 600,
+                px: 3,
+                py: 1.5,
+                "&:hover": { bgcolor: "#1541a1" },
+              }}
+            >
+              Get Started Today
+            </Button>
+          </Stack>
+        </Box>
+      </Container>
     </Box>
   );
 };

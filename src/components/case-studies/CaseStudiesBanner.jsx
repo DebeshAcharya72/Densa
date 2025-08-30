@@ -7,16 +7,33 @@ const CaseStudiesBanner = () => {
       sx={{
         width: "100%",
         height: "250px",
-        background: "linear-gradient(90deg, #0a1a3f, #123a8f)",
+        backgroundImage: `url("/images/case-studies-bg.jpg")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        position: "relative",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
         color: "#fff",
-        position: "relative",
+        overflow: "hidden",
       }}
     >
+      {/* Dark overlay for readability */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background:
+            "linear-gradient(90deg, rgba(10,26,63,0.85), rgba(18,58,143,0.85))",
+          zIndex: 1,
+        }}
+      />
+
       {/* Background subtle circles */}
       <Box
         sx={{
@@ -28,6 +45,7 @@ const CaseStudiesBanner = () => {
           top: "20%",
           left: "10%",
           filter: "blur(60px)",
+          zIndex: 2,
         }}
       />
       <Box
@@ -40,6 +58,7 @@ const CaseStudiesBanner = () => {
           bottom: "15%",
           right: "15%",
           filter: "blur(80px)",
+          zIndex: 2,
         }}
       />
 
@@ -48,7 +67,8 @@ const CaseStudiesBanner = () => {
         variant="h3"
         sx={{
           fontWeight: "bold",
-          color: "rgba(255,255,255,0.9)",
+          color: "rgba(255,255,255,0.95)",
+          zIndex: 3,
         }}
       >
         Case Studies
@@ -59,7 +79,8 @@ const CaseStudiesBanner = () => {
         variant="subtitle1"
         sx={{
           marginTop: 1,
-          color: "rgba(255,255,255,0.7)",
+          color: "rgba(255,255,255,0.75)",
+          zIndex: 3,
         }}
       >
         Successful PoE Lighting & Automation Projects

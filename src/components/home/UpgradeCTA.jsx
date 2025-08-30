@@ -47,6 +47,7 @@ export default function UpgradeCTA() {
             fontWeight: 800,
             mb: 2,
             lineHeight: 1.3,
+            color: "#fff",
           }}
         >
           Ready to Upgrade Your{" "}
@@ -69,6 +70,7 @@ export default function UpgradeCTA() {
             mb: 5,
             fontSize: "1rem",
             opacity: 0.9,
+            color: "#fff",
           }}
         >
           Transform your business with cutting-edge smart technology solutions.
@@ -174,10 +176,12 @@ export default function UpgradeCTA() {
                 <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
                   {item.title}
                 </Typography>
-                <Typography sx={{ opacity: 0.85, fontSize: 14 }}>
+                <Typography sx={{ opacity: 0.85, fontSize: 14, color: "#fff" }}>
                   {item.text}
                 </Typography>
-                <Typography sx={{ mt: 1, fontWeight: 600, fontSize: 14 }}>
+                <Typography
+                  sx={{ mt: 1, fontWeight: 600, fontSize: 14, color: "#fff" }}
+                >
                   {item.sub}
                 </Typography>
               </Paper>
@@ -200,9 +204,9 @@ export default function UpgradeCTA() {
           justifyContent="center"
           sx={{ opacity: 0.85, fontSize: 14 }}
         >
-          <Typography>Fortune 500</Typography>
-          <Typography>ISO Certified</Typography>
-          <Typography>24/7 Support</Typography>
+          <Typography sx={{ color: "#fff" }}>Fortune 500</Typography>
+          <Typography sx={{ color: "#fff" }}>ISO Certified</Typography>
+          <Typography sx={{ color: "#fff" }}>24/7 Support</Typography>
         </Stack>
       </Box>
     </Box>

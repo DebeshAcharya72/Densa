@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, Paper } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import { motion } from "framer-motion"; // 👈 add motion
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import GroupsIcon from "@mui/icons-material/Groups";
@@ -56,64 +57,96 @@ const features = [
   },
 ];
 
+// Motion variants
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" },
+  }),
+};
+
 export default function WhyChooseSection() {
   return (
     <Box sx={{ py: 8, px: 2, maxWidth: "1200px", mx: "auto" }}>
       {/* Title */}
-      <Typography
-        variant="h4"
-        align="center"
-        sx={{ fontWeight: "bold", mb: 1 }}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        Why Choose{" "}
-        <Box
-          component="span"
-          sx={{
-            background: "linear-gradient(90deg,#6a11cb,#2575fc)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
+        <Typography
+          variant="h3"
+          align="center"
+          sx={{ fontWeight: "bold", mb: 1 }}
         >
-          DENSA
-        </Box>
-      </Typography>
+          Why Choose{" "}
+          <Box
+            component="span"
+            sx={{
+              background: "linear-gradient(90deg,#6a11cb,#2575fc)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            DENSA
+          </Box>
+        </Typography>
+      </motion.div>
 
       {/* Subtitle */}
-      <Typography
-        align="center"
-        variant="body1"
-        sx={{ color: "text.secondary", mb: 6, maxWidth: "800px", mx: "auto" }}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3, duration: 0.6 }}
       >
-        We combine technical expertise with business acumen to deliver solutions
-        that not only meet your current needs but position you for future
-        success.
-      </Typography>
+        <Typography
+          align="center"
+          variant="body1"
+          sx={{ color: "text.secondary", mb: 6, maxWidth: "800px", mx: "auto" }}
+        >
+          We combine technical expertise with business acumen to deliver
+          solutions that not only meet your current needs but position you for
+          future success.
+        </Typography>
+      </motion.div>
 
       {/* Stats Section */}
       <Grid container spacing={3} justifyContent="center" sx={{ mb: 6 }}>
         {stats.map((stat, index) => (
           <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
-            <Paper
-              sx={{
-                p: 4,
-                textAlign: "center",
-                borderRadius: "16px",
-                boxShadow: "0 6px 16px rgba(0,0,0,0.08)",
-                transition: "0.3s",
-                "&:hover": { transform: "translateY(-6px)" },
-              }}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={index}
+              whileHover={{ scale: 1.05 }}
             >
-              <Box sx={{ mb: 2 }}>{stat.icon}</Box>
-              <Typography
-                variant="h5"
-                sx={{ fontWeight: "bold", mb: 1, color: "#111827" }}
+              <Paper
+                sx={{
+                  p: 4,
+                  textAlign: "center",
+                  borderRadius: "16px",
+                  backgroundColor: "#eeeef7",
+                  boxShadow: "0 6px 16px rgba(0,0,0,0.08)",
+                }}
               >
-                {stat.value}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {stat.label}
-              </Typography>
-            </Paper>
+                <Box sx={{ mb: 2 }}>{stat.icon}</Box>
+                <Typography
+                  variant="h5"
+                  sx={{ fontWeight: "bold", mb: 1, color: "#111827" }}
+                >
+                  {stat.value}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {stat.label}
+                </Typography>
+              </Paper>
+            </motion.div>
           </Grid>
         ))}
       </Grid>
@@ -122,28 +155,36 @@ export default function WhyChooseSection() {
       <Grid container spacing={3}>
         {features.map((feature, index) => (
           <Grid size={{ xs: 12, sm: 6, md: 6 }} key={index}>
-            <Paper
-              sx={{
-                p: 4,
-                borderRadius: "16px",
-                boxShadow: "0 6px 16px rgba(0,0,0,0.08)",
-                display: "flex",
-                alignItems: "flex-start",
-                gap: 2,
-                transition: "0.3s",
-                "&:hover": { transform: "translateY(-6px)" },
-              }}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={index}
+              whileHover={{ scale: 1.03 }}
             >
-              {feature.icon}
-              <Box>
-                <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
-                  {feature.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {feature.desc}
-                </Typography>
-              </Box>
-            </Paper>
+              <Paper
+                sx={{
+                  p: 4,
+                  borderRadius: "16px",
+                  boxShadow: "0 6px 16px rgba(0,0,0,0.08)",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: 2,
+                  backgroundColor: "#eeeef7",
+                }}
+              >
+                {feature.icon}
+                <Box>
+                  <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+                    {feature.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {feature.desc}
+                  </Typography>
+                </Box>
+              </Paper>
+            </motion.div>
           </Grid>
         ))}
       </Grid>

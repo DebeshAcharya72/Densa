@@ -86,7 +86,7 @@ const Navbar = () => {
       <AppBar
         position="sticky"
         sx={{
-          background: "rgba(12, 124, 236, 0.37)", // translucent
+          background: "linear-gradient(90deg,#2575fc,#6a11cb)", // translucent
           backdropFilter: "blur(10px)", // frosted glass effect
           boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
         }}
@@ -105,7 +105,7 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            MyBrand
+            Densa
           </Typography>
 
           {/* Desktop Menu */}
@@ -292,7 +292,7 @@ const Navbar = () => {
           <ListItem
             button
             component={Link}
-            to="/contact"
+            to="/contact-us"
             onClick={handleDrawerToggle}
           >
             <ListItemText primary="Contact" />

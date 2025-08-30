@@ -10,15 +10,40 @@ export default function DashSubscriptionsBanner() {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        background: "linear-gradient(180deg, #2563eb 0%, #1e40af 100%)",
         color: "white",
         flexDirection: "column",
         px: 2,
+        position: "relative",
+        backgroundImage: `url("/images/CustomizedLicense.png")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
-      <Container maxWidth="md">
+      {/* Dark overlay for readability */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background:
+            "linear-gradient(180deg, rgba(37, 100, 235, 0.56) 0%, rgba(30, 64, 175, 0.3) 100%)",
+          zIndex: 1,
+        }}
+      />
+
+      {/* Content */}
+      <Container maxWidth="md" sx={{ position: "relative", zIndex: 2 }}>
         {/* Title */}
-        <Typography variant="h3" component="h1" fontWeight="bold" gutterBottom>
+        <Typography
+          variant="h3"
+          component="h1"
+          fontWeight="bold"
+          gutterBottom
+          sx={{ color: "#fff" }}
+        >
           DASH Customized License
         </Typography>
 

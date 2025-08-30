@@ -7,7 +7,7 @@ const SolutionBanner = () => {
       sx={{
         position: "relative",
         height: "100vh",
-        backgroundImage: `url("/images/hero-bg.jpg")`, // <-- Replace with your image path
+        backgroundImage: `url("/images/lighting-automation.jpg")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "flex",
@@ -23,7 +23,8 @@ const SolutionBanner = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          bgcolor: "rgba(0, 51, 153, 0.55)", // Blue transparent overlay
+          background:
+            "linear-gradient(to right, rgba(0, 51, 153, 0.8) 0%, rgba(0, 51, 153, 0) 100%)",
           zIndex: 1,
         }}
       />
@@ -37,6 +38,7 @@ const SolutionBanner = () => {
               fontWeight: 700,
               lineHeight: 1.2,
               fontSize: { xs: "2.5rem", md: "3.5rem" },
+              color: "#fff",
             }}
           >
             Transform Your <br /> Space With <br /> Intelligent Lighting

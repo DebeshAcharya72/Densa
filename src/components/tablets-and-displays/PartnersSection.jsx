@@ -1,39 +1,51 @@
 import React from "react";
-import { Box, Container, Typography, Grid, Link, Stack } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Box, Container, Typography } from "@mui/material";
 
 const partners = [
-  "Microsoft",
-  "Apple",
-  "Samsung",
-  "Intel",
-  "Google",
-  "Adobe",
-  "Cisco",
-  "VMware",
+  {
+    name: "Microsoft",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+  },
+  {
+    name: "Apple",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+  },
+  {
+    name: "Samsung",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg",
+  },
+
+  {
+    name: "Google",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+  },
+
+  {
+    name: "Cisco",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg",
+  },
 ];
 
 const PartnersSection = () => {
   return (
     <Box
       sx={{
-        bgcolor: "#f9fafc",
+        bgcolor: "#eeeef7",
         py: { xs: 6, md: 10 },
         textAlign: "center",
+        overflow: "hidden",
       }}
     >
       <Container>
         {/* Heading */}
         <Typography
-          variant="h4"
+          variant="h3"
           sx={{
             fontWeight: 700,
             mb: 2,
           }}
         >
-          <Box component="span" sx={{ color: "#0c0c3d" }}>
-            Top Designers{" "}
-          </Box>
+          <Box component="span">Top Designers </Box>
           <Box
             component="span"
             sx={{
@@ -55,46 +67,60 @@ const PartnersSection = () => {
           infrastructure needs
         </Typography>
 
-        {/* Partners Grid */}
-        <Grid container spacing={4} justifyContent="center">
-          {partners.map((partner, index) => (
-            <Grid item key={index} xs={6} sm={4} md={3} lg={2}>
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: 600,
-                  color: "#4b4f65",
-                  transition: "all 0.3s ease",
-                  cursor: "pointer",
-                  "&:hover": {
-                    color: "#007bff",
-                    transform: "scale(1.08)",
-                  },
-                }}
-              >
-                {partner}
-              </Typography>
-            </Grid>
-          ))}
-        </Grid>
-
-        {/* CTA Link */}
-        <Stack direction="row" justifyContent="center" mt={6}>
-          <Link
-            href="#"
-            underline="none"
+        {/* Sliding Logos */}
+        <Box
+          sx={{
+            display: "flex",
+            overflow: "hidden",
+            position: "relative",
+            width: "100%",
+          }}
+        >
+          {/* Infinite sliding effect */}
+          <Box
             sx={{
               display: "flex",
-              alignItems: "center",
-              fontWeight: 600,
-              color: "#007bff",
-              fontSize: "1rem",
-              "&:hover": { textDecoration: "underline" },
+              animation: "slide 25s linear infinite",
+              "@keyframes slide": {
+                "0%": { transform: "translateX(0)" },
+                "100%": { transform: "translateX(-50%)" },
+              },
             }}
           >
-            See Our Partners <ArrowForwardIcon sx={{ ml: 0.5, fontSize: 20 }} />
-          </Link>
-        </Stack>
+            {/* Duplicate logos for smooth infinite loop */}
+            {[...partners, ...partners].map((partner, index) => (
+              <Box
+                key={index}
+                sx={{
+                  flex: "0 0 auto",
+                  width: { xs: "120px", sm: "150px", md: "180px" },
+                  mx: 3,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Box
+                  component="img"
+                  src={partner.logo}
+                  alt={partner.name}
+                  sx={{
+                    padding: 8,
+                    maxHeight: "50px",
+                    maxWidth: "100%",
+                    objectFit: "contain",
+                    filter: "grayscale(100%)",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      filter: "grayscale(0%)",
+                      transform: "scale(1.08)", // 👈 scale logo itself
+                    },
+                  }}
+                />
+              </Box>
+            ))}
+          </Box>
+        </Box>
       </Container>
     </Box>
   );

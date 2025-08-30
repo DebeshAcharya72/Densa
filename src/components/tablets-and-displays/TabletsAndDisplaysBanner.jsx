@@ -1,111 +1,92 @@
 import React from "react";
-import { Box, Button, Typography, Container } from "@mui/material";
+import { Box, Button, Typography, Container, Stack } from "@mui/material";
 
-const TabletsAndDisplaysBanner = ({
-  title = "Tablets And Displays",
-  subtitle = "Power your devices efficiently with our innovative PoE to USB-C solutions. Professional-grade connectivity for modern workspaces.",
-  ctaText = "Explore Solutions",
-  ctaHref = "#",
-}) => {
+const TabletsAndDisplaysBanner = () => {
   return (
     <Box
       sx={{
         position: "relative",
-        width: "100%",
-        minHeight: "70vh",
+        height: "100vh",
+        backgroundImage: `url("/images/TabletsBanner.jpg")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
-        // gradient background
-        background:
-          "linear-gradient(135deg, #0b2a66 0%, #0a1b4a 60%, #0a1b4a 100%)",
         color: "#fff",
-        overflow: "hidden",
       }}
     >
-      {/* Decorative circles */}
+      {/* Overlay */}
       <Box
         sx={{
           position: "absolute",
-          width: 180,
-          height: 180,
-          borderRadius: "50%",
-          top: "8%",
-          left: "-40px",
-          background: "rgba(97, 165, 255, 0.25)",
-          filter: "blur(2px)",
-        }}
-        aria-label="decorative circle"
-      />
-      <Box
-        sx={{
-          position: "absolute",
-          width: 120,
-          height: 120,
-          borderRadius: "50%",
-          bottom: "-40px",
-          right: "6%",
-          background: "rgba(36, 173, 255, 0.25)",
-          filter: "blur(2px)",
-        }}
-        aria-label="decorative circle"
-      />
-      <Container
-        maxWidth="lg"
-        sx={{
-          position: "relative",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background:
+            "linear-gradient(to right, rgba(0, 51, 153, 0.8) 0%, rgba(0, 51, 153, 0) 100%)",
           zIndex: 1,
-          textAlign: "center",
         }}
-      >
-        <Typography
-          variant="h2"
-          component="h1"
-          sx={{
-            fontWeight: 800,
-            fontSize: { xs: "2.6rem", sm: "4rem", md: "4.5rem" },
-            letterSpacing: "-0.02em",
-            lineHeight: 1.05,
-            mb: 2,
-          }}
-        >
-          {title}
-        </Typography>
+      />
 
-        <Typography
-          variant="h6"
-          component="p"
-          sx={{
-            maxWidth: "60ch",
-            mx: "auto",
-            opacity: 0.95,
-            mb: 4,
-            fontWeight: 500,
-            fontSize: { xs: "1rem", sm: "1.125rem" },
-          }}
-        >
-          {subtitle}
-        </Typography>
+      {/* Content */}
+      <Container sx={{ position: "relative", zIndex: 2, maxWidth: "lg" }}>
+        <Box sx={{ maxWidth: "700px" }}>
+          <Typography
+            variant="h2"
+            sx={{
+              fontWeight: 700,
+              lineHeight: 1.2,
+              fontSize: { xs: "2.5rem", md: "3.5rem" },
+              color: "#fff",
+            }}
+          >
+            Tablets <br /> And Displays
+          </Typography>
 
-        <Button
-          variant="contained"
-          color="primary"
-          href={ctaHref}
-          size="large"
-          sx={{
-            borderRadius: 999,
-            px: 4,
-            py: 1.4,
-            boxShadow: "0 6px 20px rgba(30,144,255,0.4)",
-            transition: "transform 0.2s ease",
-            "&:hover": {
-              transform: "translateY(-1px)",
-              boxShadow: "0 12px 28px rgba(30,144,255,0.5)",
-            },
-          }}
-        >
-          {ctaText}
-        </Button>
+          <Typography
+            variant="h6"
+            sx={{
+              mt: 3,
+              mb: 4,
+              color: "rgba(255,255,255,0.85)",
+              fontWeight: 400,
+              maxWidth: "600px",
+            }}
+          >
+            Power your devices efficiently with our innovative PoE to USB-C
+            solutions. Professional-grade connectivity for modern workspaces.
+          </Typography>
+
+          <Stack direction="row" spacing={2}>
+            <Button
+              variant="contained"
+              sx={{
+                bgcolor: "#1a57dba1",
+                borderRadius: 10,
+                fontWeight: 600,
+                px: 3,
+                py: 1.5,
+                "&:hover": { bgcolor: "#1541a1" },
+              }}
+            >
+              EXPLORE SOLUTIONS
+            </Button>
+
+            {/* <Button
+              variant="contained"
+              sx={{
+                bgcolor: "rgba(0,0,0,0.6)",
+                fontWeight: 600,
+                px: 3,
+                py: 1.5,
+                "&:hover": { bgcolor: "rgba(0,0,0,0.8)" },
+              }}
+            >
+              Watch Demo
+            </Button> */}
+          </Stack>
+        </Box>
       </Container>
     </Box>
   );

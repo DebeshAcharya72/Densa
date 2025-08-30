@@ -10,125 +10,157 @@ import {
 } from "@mui/material";
 import MemoryIcon from "@mui/icons-material/Memory";
 import HubIcon from "@mui/icons-material/Hub";
+import { motion } from "framer-motion";
 
 const OneRowTwoColumnSection = () => {
   return (
-    <Box sx={{ bgcolor: "#f8fbff", py: 8 }}>
+    <Box
+      sx={{
+        background: "#eeeef7",
+        py: 10,
+      }}
+    >
       <Container maxWidth="lg">
-        <Grid container spacing={6} alignItems="center">
+        <Grid container spacing={8} alignItems="center">
           {/* Left: Image */}
           <Grid size={{ xs: 12, md: 6 }}>
-            <Box
-              component="img"
-              src="/images/device.png" // <-- Replace with your image path
-              alt="Lighting Controller"
-              sx={{
-                width: "100%",
-                borderRadius: "20px",
-                boxShadow: "0px 8px 24px rgba(0,0,0,0.12)",
-              }}
-            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, x: -50 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              <Box
+                component="img"
+                src="/images/Dentondevice.jpg"
+                alt="Lighting Controller"
+                sx={{
+                  width: "100%",
+                  borderRadius: "20px",
+                  boxShadow: "0px 8px 24px rgba(0,0,0,0.15)",
+                }}
+              />
+            </motion.div>
           </Grid>
 
           {/* Right: Text + Features */}
           <Grid size={{ xs: 12, md: 6 }}>
-            <Chip
-              label="Intelligent Control System"
-              sx={{
-                bgcolor: "#e8f0ff",
-                color: "#1a56db",
-                fontWeight: 600,
-                borderRadius: "20px",
-                px: 2,
-                py: 0.5,
-                mb: 2,
-              }}
-            />
-
-            <Typography
-              variant="h4"
-              sx={{ fontWeight: 700, mb: 2, color: "#0d1b2a" }}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true }}
             >
-              Denton DBI: Next Generation PoE <br /> Lighting Controller
-            </Typography>
+              <Chip
+                label="Intelligent Control System"
+                sx={{
+                  bgcolor: "#fff",
+                  color: "#1a56db",
+                  fontWeight: 600,
+                  borderRadius: "20px",
+                  px: 2,
+                  py: 0.5,
+                  mb: 2,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
+                }}
+              />
 
-            {/* Blue underline */}
-            <Box
-              sx={{
-                width: "50px",
-                height: "3px",
-                bgcolor: "#1a56db",
-                mb: 3,
-              }}
-            />
+              <Typography variant="h4" sx={{ fontWeight: 700, mb: 2 }}>
+                Denton DBI: Next Generation PoE <br /> Lighting Controller
+              </Typography>
 
-            <Typography
-              variant="body1"
-              sx={{
-                mb: 5,
-                color: "rgba(0,0,0,0.7)",
-                maxWidth: "500px",
-              }}
-            >
-              Experience unparalleled control with our state-of-the-art Digital
-              Building Intelligence system.
-            </Typography>
+              {/* Animated underline */}
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 60 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <Box
+                  sx={{
+                    height: "3px",
+                    bgcolor: "#1a56db",
+                    mb: 3,
+                    borderRadius: "2px",
+                  }}
+                />
+              </motion.div>
+
+              <Typography
+                variant="body1"
+                sx={{
+                  mb: 5,
+                  color: "rgba(0,0,0,0.7)",
+                  maxWidth: "500px",
+                }}
+              >
+                Experience unparalleled control with our state-of-the-art
+                Digital Building Intelligence system.
+              </Typography>
+            </motion.div>
 
             {/* Feature Cards */}
             <Grid container spacing={3}>
-              <Grid size={{ xs: 12, md: 6 }}>
-                <Card
-                  sx={{
-                    p: 2,
-                    borderRadius: "16px",
-                    boxShadow: "0px 4px 20px rgba(0,0,0,0.08)",
-                  }}
-                >
-                  <CardContent>
+              {[
+                {
+                  icon: (
                     <MemoryIcon
                       sx={{ fontSize: 36, color: "#1a56db", mb: 1 }}
                     />
-                    <Typography
-                      variant="h6"
-                      sx={{ fontWeight: 700, mb: 1, color: "#0d1b2a" }}
-                    >
-                      Smart Processing
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{ color: "rgba(0,0,0,0.7)" }}
-                    >
-                      Advanced algorithms for optimal performance
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-
-              <Grid size={{ xs: 12, md: 6 }}>
-                <Card
-                  sx={{
-                    p: 2,
-                    borderRadius: "16px",
-                    boxShadow: "0px 4px 20px rgba(0,0,0,0.08)",
-                  }}
-                >
-                  <CardContent>
+                  ),
+                  title: "Smart Processing",
+                  desc: "Advanced algorithms for optimal performance",
+                },
+                {
+                  icon: (
                     <HubIcon sx={{ fontSize: 36, color: "#1a56db", mb: 1 }} />
-                    <Typography
-                      variant="h6"
-                      sx={{ fontWeight: 700, mb: 1, color: "#0d1b2a" }}
+                  ),
+                  title: "Seamless Integration",
+                  desc: "Connect with existing building systems",
+                },
+              ].map((feature, index) => (
+                <Grid size={{ xs: 12, md: 6 }} key={index}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: index * 0.2,
+                      ease: "easeOut",
+                    }}
+                    whileHover={{ scale: 1.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <Card
+                      sx={{
+                        p: 2,
+                        borderRadius: "16px",
+                        boxShadow: "0px 6px 20px rgba(0,0,0,0.08)",
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          boxShadow: "0px 10px 30px rgba(26,86,219,0.25)",
+                        },
+                      }}
                     >
-                      Seamless Integration
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{ color: "rgba(0,0,0,0.7)" }}
-                    >
-                      Connect with existing building systems
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
+                      <CardContent>
+                        {feature.icon}
+                        <Typography
+                          variant="body1"
+                          sx={{ fontWeight: 700, mb: 1 }}
+                        >
+                          {feature.title}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{ color: "rgba(0,0,0,0.7)" }}
+                        >
+                          {feature.desc}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </Grid>
+              ))}
             </Grid>
           </Grid>
         </Grid>

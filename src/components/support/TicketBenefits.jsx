@@ -1,9 +1,10 @@
 import React from "react";
-import { Box, Typography, Grid, Paper, Stack } from "@mui/material";
+import { Box, Typography, Grid, Paper } from "@mui/material";
 import BoltIcon from "@mui/icons-material/Bolt";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 import PeopleIcon from "@mui/icons-material/People";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -28,63 +29,101 @@ const features = [
   },
 ];
 
+// Framer Motion Variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 70, damping: 15 },
+  },
+};
+
 const TicketBenefits = () => {
   return (
     <Box
       sx={{
-        py: 8,
+        py: 10,
         px: 3,
-        backgroundColor: "#f9f9ff",
+        background: "linear-gradient(180deg, #f9f9ff 0%, #eef2ff 100%)",
         textAlign: "center",
       }}
     >
       {/* Heading */}
-      <Typography variant="h4" sx={{ fontWeight: "bold", mb: 6 }}>
-        Why Raise a Ticket With Us?
-      </Typography>
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <Typography variant="h3" sx={{ fontWeight: "bold", mb: 6 }}>
+          Why Raise a Ticket With Us?
+        </Typography>
+      </motion.div>
 
       {/* Features Grid */}
-      <Grid container spacing={4} justifyContent="center">
-        {features.map((feature, index) => (
-          <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
-            <Paper
-              elevation={0}
-              sx={{
-                p: 4,
-                borderRadius: 3,
-                textAlign: "center",
-                transition: "0.3s",
-                "&:hover": {
-                  boxShadow: "0 6px 20px rgba(0,0,0,0.1)",
-                  transform: "translateY(-5px)",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  bgcolor: "rgba(0,0,0,0.05)",
-                  width: 70,
-                  height: 70,
-                  borderRadius: 3,
-                  mx: "auto",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  mb: 2,
-                }}
-              >
-                {feature.icon}
-              </Box>
-              <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
-                {feature.title}
-              </Typography>
-              <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                {feature.desc}
-              </Typography>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <Grid container spacing={4} justifyContent="center">
+          {features.map((feature, index) => (
+            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
+              <motion.div variants={cardVariants} whileHover={{ scale: 1.05 }}>
+                <Paper
+                  elevation={0}
+                  sx={{
+                    p: 4,
+                    borderRadius: 4,
+                    textAlign: "center",
+                    transition: "0.3s",
+                    minHeight: "160px",
+                    background: "#fff",
+                    "&:hover": {
+                      boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      bgcolor: "rgba(0,0,0,0.04)",
+                      width: 72,
+                      height: 72,
+                      borderRadius: "20%",
+                      mx: "auto",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      mb: 2,
+                    }}
+                  >
+                    {feature.icon}
+                  </Box>
+                  <Typography
+                    variant="h6"
+                    sx={{ fontWeight: "bold", mb: 1, color: "#555" }}
+                  >
+                    {feature.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                    {feature.desc}
+                  </Typography>
+                </Paper>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+      </motion.div>
     </Box>
   );
 };
