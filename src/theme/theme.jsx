@@ -1,7 +1,7 @@
 // theme.js
 import { createTheme } from "@mui/material/styles";
 
-const theme = createTheme({
+const Theme = createTheme({
   typography: {
     fontFamily: "'Montserrat', sans-serif",
     h1: {
@@ -30,4 +30,4 @@ const theme = createTheme({
   },
 });
 
-export default theme;
+export default Theme;

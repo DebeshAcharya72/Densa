@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "./theme/Theme";
+import Theme from "./theme/Theme";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={Theme}>
         <App />
       </ThemeProvider>
     </BrowserRouter>
