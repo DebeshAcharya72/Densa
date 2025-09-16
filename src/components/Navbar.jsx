@@ -13,7 +13,7 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
-import { Link } from "react-router-dom"; // ✅ React Router Link
+import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -86,27 +86,33 @@ const Navbar = () => {
       <AppBar
         position="sticky"
         sx={{
-          background: "linear-gradient(90deg,#2575fc,#6a11cb)", // translucent
-          backdropFilter: "blur(10px)", // frosted glass effect
+          background: "linear-gradient(90deg,#2575fc,#6a11cb)",
+          backdropFilter: "blur(10px)",
           boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
         }}
       >
         <Toolbar>
           {/* Logo */}
-          <Typography
-            variant="h6"
+          <Box
             component={Link}
             to="/"
             sx={{
               flexGrow: 1,
-              fontWeight: "bold",
-              cursor: "pointer",
-              color: "#fff",
+              display: "flex",
+              alignItems: "center",
               textDecoration: "none",
             }}
           >
-            Densa
-          </Typography>
+            <Box
+              component="img"
+              src="/images/logo/noBgWhite.png"
+              alt="Densa Logo"
+              sx={{
+                height: 60,
+                mr: 1,
+              }}
+            />
+          </Box>
 
           {/* Desktop Menu */}
           <Box sx={{ display: { xs: "none", md: "block" } }}>
@@ -180,10 +186,10 @@ const Navbar = () => {
 
             <Button
               component={Link}
-              to="/support"
+              to="/projects"
               sx={{ color: "#fff", mx: 1 }}
             >
-              Support
+              Projects
             </Button>
             <Button
               component={Link}

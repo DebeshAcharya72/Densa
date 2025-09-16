@@ -10,6 +10,7 @@ import DentonDrawingDatabase from "./pages/DentonDrawingDatabase";
 import Support from "./pages/Support";
 import ContactUs from "./pages/ContactUs";
 import CommercialSolutions from "./pages/CommercialSolutions";
+import Projects from "./pages/Projects";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/support" element={<Support />} />
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/commercial-solutions" element={<CommercialSolutions />} />
+      <Route path="/projects" element={<Projects />} />
       <Route
         path="/denton-drawing-database"
         element={<DentonDrawingDatabase />}

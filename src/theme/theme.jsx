@@ -5,27 +5,27 @@ const Theme = createTheme({
   typography: {
     fontFamily: "'Montserrat', sans-serif",
     h1: {
-      color: "#1E293B", // custom color for h1
+      color: "#1E293B",
     },
     h2: {
-      color: "#334155", // custom color for h2
+      color: "#334155",
     },
     h3: {
-      color: "#475569", // custom color for h3
+      color: "#475569",
     },
     h4: {
-      color: "#516074ff", // custom color for h4
+      color: "#516074ff",
     },
     body1: {
-      color: "#374151", // default text color
+      color: "#374151",
     },
   },
   palette: {
     primary: {
-      main: "#1976d2", // default primary color
+      main: "#1976d2",
     },
     custom: {
-      heading: "#1E293B", // define a reusable custom heading color
+      heading: "#1E293B",
     },
   },
 });

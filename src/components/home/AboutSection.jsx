@@ -160,17 +160,16 @@ export default function AboutSection() {
               variant="body1"
               sx={{ color: "text.secondary", mb: 4, lineHeight: 1.8 }}
             >
-              For over two decades, DENSA has been at the forefront of smart
-              technology innovation, transforming how businesses and
+              For over two decades, DENSA has been at the forefront of
+              intelligent technology innovation, transforming how businesses and
               organizations operate through intelligent automation, advanced
               security systems, and cutting-edge IoT solutions.
               <br />
               <br />
               Our expertise spans across smart building automation, PoE lighting
-              systems, comprehensive security infrastructure, and
-              blockchain-powered supply chain solutions. We don’t just implement
-              technology — we create intelligent ecosystems that evolve with
-              your needs.
+              systems, comprehensive security infrastructure, and solutions. We
+              don’t just implement technology — we create intelligent ecosystems
+              that evolve with your needs.
             </Typography>
           </motion.div>
 

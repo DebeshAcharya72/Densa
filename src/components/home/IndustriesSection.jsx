@@ -24,7 +24,7 @@ const industries = [
       "Space Optimization",
     ],
     stats: [
-      { value: "200+", label: "Projects", color: "#2563eb" },
+      { value: "100+", label: "Projects", color: "#2563eb" },
       { value: "35%", label: "Cost Savings", color: "#16a34a" },
       { value: "99.9%", label: "Uptime", color: "#9333ea" },
     ],

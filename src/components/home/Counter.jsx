@@ -7,10 +7,12 @@ import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import CloudDoneIcon from "@mui/icons-material/CloudDone";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
 
 const stats = [
   {
-    value: "500+",
+    value: "100+",
     label: "Projects Completed",
     icon: <WorkOutlineIcon sx={{ fontSize: 30, color: "#2575fc" }} />,
   },
@@ -28,6 +30,16 @@ const stats = [
     value: "20+",
     label: "Years Experience",
     icon: <AccessTimeIcon sx={{ fontSize: 30, color: "#4caf50" }} />,
+  },
+  {
+    value: "35%+",
+    label: "Energy Project Savings",
+    icon: <EnergySavingsLeafIcon sx={{ fontSize: 30, color: "#00bcd4" }} />,
+  },
+  {
+    value: "AI",
+    label: "Expert Support for Productivity",
+    icon: <SmartToyIcon sx={{ fontSize: 30, color: "#9c27b0" }} />,
   },
 ];
 
@@ -71,7 +83,11 @@ export default function Counter() {
           sx={{ maxWidth: "1200px", margin: "0 auto" }}
         >
           {stats.map((item, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index} sx={{ width: 250 }}>
+            <Grid
+              size={{ xs: 12, sm: 6, md: 4 }}
+              key={index}
+              // sx={{ width: 250 }}
+            >
               <motion.div variants={cardVariants}>
                 <Paper
                   elevation={3}
