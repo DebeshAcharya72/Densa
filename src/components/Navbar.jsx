@@ -61,13 +61,21 @@ const Navbar = () => {
         >
           <ListItemText primary="Products" />
         </ListItem>
-        <ListItem
+        {/* <ListItem
           button
           component={Link}
           to="/support"
           onClick={handleDrawerToggle}
         >
           <ListItemText primary="Support" />
+        </ListItem> */}
+        <ListItem
+          button
+          component={Link}
+          to="/projects"
+          onClick={handleDrawerToggle}
+        >
+          <ListItemText primary="Projects" />
         </ListItem>
         <ListItem
           button
