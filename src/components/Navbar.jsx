@@ -298,10 +298,10 @@ const Navbar = () => {
           <ListItem
             button
             component={Link}
-            to="/support"
+            to="/projects"
             onClick={handleDrawerToggle}
           >
-            <ListItemText primary="Support" />
+            <ListItemText primary="Projects" />
           </ListItem>
           <ListItem
             button
